@@ -18,10 +18,10 @@ Now let’s get started.
 ## Open develop folder in a Text Editor:
 Have a text editor installed in your computer in order to create and edit text files in your develop folder. You can use Notepad, Visual Studio Code, Atom, etc. as you have access to edit your files. For my case, I will use Visual Studio Code. As you open the develop folder in Visual Studio Code, create these two files (if you didn’t download the starter code from earlier):
 * my-first-plugin
-** main.js
-** manifest.json
-** 	assets (this is a folder called asset)
-*** artboard-lib
+     * main.js
+     * manifest.json
+     * 	assets (this is a folder called asset)
+          * artboard-lib
 The JavaScript file main.js is where the code lives, and manifest.json is the JSON file where we include information about our plugin. Please do not rename these files.
 Describe the plugin:
 Adobe XD requires users to describe your plugin in the JSON file. To do that, simply add a “description” tag under the file like so:
