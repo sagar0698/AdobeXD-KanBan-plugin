@@ -27,7 +27,7 @@ The JavaScript file main.js is where the code lives, and manifest.json is the JS
 Describe the plugin:
 Adobe XD requires users to describe your plugin in the JSON file. To do that, simply add a “description” tag under the file like so:
 `
-{
+`{
     "id" : "<YOUR ID HERE>",
     "name": "first-plugin-test",
     "version": "1.0.0",
@@ -48,4 +48,5 @@ Adobe XD requires users to describe your plugin in the JSON file. To do that, si
             "panelId": "artboardGenerator"
         }
     ]
-}`
+}
+`
