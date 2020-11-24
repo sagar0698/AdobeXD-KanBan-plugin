@@ -239,6 +239,7 @@ The panel variable shows everything that appears on the left (from the screensho
 
 ## Run the Plugin: 
 (Again Reload Plugins as mentioned above)
+
 ![image](https://user-images.githubusercontent.com/55200206/100030288-02d1ed80-2da8-11eb-87db-1d66ea45dd5d.png)
 
 And that is how you create a plugin in Adobe XD. I know this isn’t flashy or absolutely perfect, but we were able to successfully create a mini KanBan without having to drag and drop multiple rectangles in place. The completed sample code will be located in my repository
