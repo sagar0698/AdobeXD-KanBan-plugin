@@ -48,6 +48,4 @@ Adobe XD requires users to describe your plugin in the JSON file. To do that, si
             "panelId": "artboardGenerator"
         }
     ]
-  }
-  
-`
+  }`
