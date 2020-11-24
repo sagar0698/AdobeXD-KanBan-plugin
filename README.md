@@ -21,7 +21,8 @@ Have a text editor installed in your computer in order to create and edit text f
      * main.js
      * manifest.json
      * 	assets (this is a folder called asset)
-          * artboard-lib
+          * artboard-lib.js
+
 The JavaScript file main.js is where the code lives, and manifest.json is the JSON file where we include information about our plugin. Please do not rename these files.
 Describe the plugin:
 Adobe XD requires users to describe your plugin in the JSON file. To do that, simply add a “description” tag under the file like so:
