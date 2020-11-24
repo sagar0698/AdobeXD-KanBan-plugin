@@ -5,7 +5,7 @@ With my 72 hour experience using Adobe XD, it was a bit intimidating to create a
      
 ## Prerequisites:
 Before beginning with the project, make sure you have Adobe XD downloaded and updated. Then follow these directions:
--	open Adobe Developer Console website
+-	open [Adobe Developer Console website](https://console.adobe.io/home)
 -	Select Create New Project
 -	Click on Add Plugin for Adobe XD
 -	Locate your Plugin ID (we will need it later)
@@ -26,3 +26,25 @@ Have a text editor installed in your computer in order to create and edit text f
 The JavaScript file main.js is where the code lives, and manifest.json is the JSON file where we include information about our plugin. Please do not rename these files.
 Describe the plugin:
 Adobe XD requires users to describe your plugin in the JSON file. To do that, simply add a “description” tag under the file like so:
+`{
+    "id" : "<YOUR ID HERE>",
+    "name": "first-plugin-test",
+    "version": "1.0.0",
+    "description": "This is a KanBan plugin that would provide designers a cleaner and better workflow",
+    "summary": "This is a KanBan plugin that would provide designers a cleaner and better workflow",
+    "languages": ["en"], 
+    "author": "Your Name",
+    "helpUrl": "https://mywebsite.com/help",
+    "host": {
+      "app": "XD",
+      "minVersion": "13.0"
+    },
+    "uiEntryPoints": [
+        {
+            "type": "panel",
+            "label": "Artboard Generator",
+            "panelId": "artboardGenerator"
+        }
+    ]
+  }
+`
