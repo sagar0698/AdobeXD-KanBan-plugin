@@ -50,3 +50,45 @@ Adobe XD requires users to describe your plugin in the JSON file. To do that, si
     ]
 }
 ```
+Remember the ID I asked you about earlier, replace the <YOUR ID HERE> with your plugin ID from the Adobe Console. 
+     
+## The Main Code for main.js:
+Let’s begin by writing the main code for this plugin. And yes, this is a bit lengthy, but I’ll everything as we code.
+```
+const { Artboard, Color } = require("scenegraph");
+const { editDocument } = require("application");
+const artboardSizes = require("./assets/artboard-lib");
+
+const addArtboard = () => {
+  let btns = document.querySelectorAll("button");
+
+  const getValues = event => {
+    let activeBtn = event.currentTarget;
+    let name = activeBtn.getAttribute("data-name");
+    let width = activeBtn.getAttribute("data-width");
+    let height = activeBtn.getAttribute("data-height");
+
+    editDocument({ editLabel: "add artboard" }, (selection, documentRoot) => {
+      let newArtboard = new Artboard();
+      newArtboard.height = JSON.parse(height);
+      newArtboard.width = JSON.parse(width);
+      newArtboard.fill = new Color("#ffffff");
+      newArtboard.name = name;
+      documentRoot.addChild(newArtboard);
+    });
+  };
+
+  for (let i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", getValues);
+  }
+};
+```
+
+Let’s break this down: 
+* The first line is telling XD we are going to use the Artboard object and the Color module by requiring from the scenegraph API
+* Getting a reference to the editDocument method available in the application module.
+* Having the application link to the artboard-lib js file that we will work on next
+From there, we start to create our Artboard where it will show a selection of options for our KanBan board. Before labeling each portion, we first create the size of the boxes (width, height) and label each box with a name and color (#ffffff – white, you can also just type down White or any other color). 
+
+## Labeling the board in artboard-lib:
+Now we must label each portion of the board like Agenda (what needs to be done), Completed (what is completed), Not Completed (what isn’t done), and Priorities (which tasks need to be prioritized). The code will look like this:
