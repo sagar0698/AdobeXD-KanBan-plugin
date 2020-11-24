@@ -128,3 +128,118 @@ Notice that everything under each tag are the variable names under main.js. Make
 * Do this every time you make any changes to the JavaScript or JSON files.
 The image will appear as so:
 ![image](https://user-images.githubusercontent.com/55200206/100030194-cdc59b00-2da7-11eb-8af2-c66a193fde1b.png)
+
+## Finishing main.js
+To conclude everything and have the labels appear on the artboard, include the following information under your main.js:
+```
+const { Artboard, Color } = require("scenegraph");
+const { editDocument } = require("application");
+const artboardSizes = require("./assets/artboard-lib");
+let panel;
+
+const addArtboard = () => {
+  let btns = document.querySelectorAll("button");
+
+  const getValues = event => {
+    let activeBtn = event.currentTarget;
+    let name = activeBtn.getAttribute("data-name");
+    let width = activeBtn.getAttribute("data-width");
+    let height = activeBtn.getAttribute("data-height");
+    let text = activeBtn.getAttribute("data-text");
+
+    editDocument({ editLabel: "add artboard" }, (selection, documentRoot) => {
+      let newArtboard = new Artboard();
+      newArtboard.height = JSON.parse(height);
+      newArtboard.width = JSON.parse(width);
+      newArtboard.fill = new Color("#ffffff");
+      newArtboard.name = name;
+      newArtboard.text = JSON.parse(text);
+      documentRoot.addChild(newArtboard);
+    });
+  };
+
+  for (let i = 0; i < btns.length; i++) {
+    btns[i].addEventListener("click", getValues);
+  }
+};
+
+const panelMarkup = () => {
+  let btn = "";
+  for (let i = 0; i < artboardSizes.length; i++) {
+    let { name, img, height, width, text } = artboardSizes[i];
+
+    btn += `
+      <style>
+        .icon {
+          max-width: 50px;
+          width: 100%;
+          margin: auto;
+        }
+        .icon img {
+          width: 100%;
+        }
+        .btn-el {
+          text-align: center;
+          margin-bottom: 30px;
+        }
+      </style>
+      <div class="btn-el">
+        <div class="icon">
+          <img src="${img}">
+        </div>
+        <p>${name}</p>
+        <button
+        data-name="${name}"
+        data-height="${height}"
+        data-width="${width}"
+        data-text="${width}"
+        >
+        Add Artboard
+        </button>
+      </div>
+    
+    `;
+  }
+
+  let html = `
+    <div>
+      <div>
+        <h1 style="margin-bottom: 30px;">Select Artboards</h1>
+      </div>
+      <div class="btn-group">
+        ${btn}
+      </div>
+    </div>
+  `;
+  panel = document.createElement("div");
+  panel.innerHTML = html;
+  return panel;
+};
+
+const show = async event => {
+  if (!panel) {
+    await event.node.appendChild(panelMarkup());
+    await addArtboard();
+  }
+};
+
+const hide = event => console.log("plugin is hiding");
+
+module.exports = {
+  panels: {
+    artboardGenerator: {
+      show,
+      hide
+    }
+  }
+};
+```
+
+The panel variable shows everything that appears on the left (from the screenshot earlier) in a HTML (Hyper-Text Markup Language) format while the panelMarkup allows us to drag each item across to the artboard as shown below.
+
+## Run the Plugin: 
+(Again Reload Plugins as mentioned above)
+![image](https://user-images.githubusercontent.com/55200206/100030288-02d1ed80-2da8-11eb-87db-1d66ea45dd5d.png)
+
+And that is how you create a plugin in Adobe XD. I know this isn’t flashy or absolutely perfect, but we were able to successfully create a mini KanBan without having to drag and drop multiple rectangles in place. The completed sample code will be located in my repository
+
