@@ -90,5 +90,41 @@ Let’s break this down:
 * Having the application link to the artboard-lib js file that we will work on next
 From there, we start to create our Artboard where it will show a selection of options for our KanBan board. Before labeling each portion, we first create the size of the boxes (width, height) and label each box with a name and color (#ffffff – white, you can also just type down White or any other color). 
 
-## Labeling the board in artboard-lib:
-Now we must label each portion of the board like Agenda (what needs to be done), Completed (what is completed), Not Completed (what isn’t done), and Priorities (which tasks need to be prioritized). The code will look like this:
+## Labeling the board in artboard-lib.js:
+Now we must label each portion of the board like Agenda (what needs to be done), Completed (what is completed), Not Completed (what isn’t done), and Priorities (which tasks need to be prioritized). The code (under artboard-lib.js) will look like this:
+```
+module.exports = [
+    {
+      name: "Agenda",
+      img: './assets/agenda.png',
+      height: 300,
+      width: 500,
+    },
+    {
+      name: "Completed",
+      img: './assets/completed.png',
+      height: 300,
+      width: 500,
+    },
+    {
+      name: "Not Completed",
+      img: './assets/n-completed.jpg',
+      height: 300,
+      width: 500,
+    },
+    {
+      name: "Priorities",
+      img: './assets/next-iteration.jpg',
+      height: 300,
+      width: 500
+    }
+  ]
+```
+
+Notice that everything under each tag are the variable names under main.js. Make sure to have the same height and width for each label for the KanBan and feel free to include your own image. To check that it works:
+* Select menu (the three dash line)
+* Select Plugins
+* Then Development > Reload Plugins
+* Do this every time you make any changes to the JavaScript or JSON files.
+The image will appear as so:
+![image](https://user-images.githubusercontent.com/55200206/100030194-cdc59b00-2da7-11eb-8af2-c66a193fde1b.png)
